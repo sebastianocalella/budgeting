@@ -1,27 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {MatTableModule} from '@angular/material/table';
 import { ExpenseService } from '@services/expense.service';
-import { Expense } from '@models/expense.interface';
-import { ExpensesTableComponent } from "./widgets/expenses-table/expenses-table.component";
+import { Expense } from '@app/models/expense.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-expenses',
-  standalone: true,
-  imports: [CommonModule, ExpensesTableComponent],
-  templateUrl: './expenses.component.html',
-  styleUrl: './expenses.component.scss'
+  selector: 'app-expenses-table',
+  imports: [CommonModule, MatTableModule],
+  templateUrl: './expenses-table.component.html',
+  styleUrl: './expenses-table.component.scss'
 })
-
-export class ExpensesComponent implements OnInit {
-  expenses: Expense[] = [];
-  loading = false;
-  error: string | null = null;
-
+export class ExpensesTableComponent implements OnInit {
   constructor(private expenseService: ExpenseService) { }
-
   ngOnInit(): void {
     this.loadExpenses();
   }
+  expenses: Expense[] = [];
+  loading = false;
+  error: string | null = null;
+  displayedColumns = ['category', 'amount', 'date', 'description'];
 
   private loadExpenses(): void {
     this.loading = true;

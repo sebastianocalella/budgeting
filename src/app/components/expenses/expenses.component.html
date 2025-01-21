@@ -1,7 +1,14 @@
 <div class="expenses-container">
-  <h2>Expenses</h2>
+  <div id="expenses-header">
+    <h2>Expenses</h2>
 
-  <div *ngIf="loading">Loading...</div>
+  </div>
+
+  <div id="expenses-wrapper">
+    <app-expenses-table></app-expenses-table>
+
+  </div>
+  <!-- <div *ngIf="loading">Loading...</div>
 
   <div *ngIf="error" class="error-message">
     {{ error }}
@@ -10,8 +17,8 @@
   <div *ngIf="!loading && !error">
     <div *ngFor="let expense of expenses" class="expense-item">
       <h3>{{ expense.description }}</h3>
-      <p>Amount: {{ expense.amount | currency }}</p>
+      <p>Amount: {{ expense.amount }}&euro;</p>
       <p>Date: {{ expense.date | date }}</p>
     </div>
-  </div>
+  </div> -->
 </div>
